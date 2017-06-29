@@ -10,7 +10,7 @@ class App extends Component {
     };
     componentDidMount() {
         axios
-            .get(`${baseUrl}/api/customers`)
+            .get(`${baseUrl}/api/customer`)
             .then(response => {
                 this.setState({
                     customers: response.data
