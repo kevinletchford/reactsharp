@@ -20,19 +20,39 @@ namespace ReactSharp.Controllers
             using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ReactSharp"].ToString()))
             {
                 return con.Query<Customer>(@"
-                    SELECT   i.CustomerID
-                            ,i.CompanyName
-                            ,i.Name
-                            ,i.AddressLine1
-                            ,i.AddressLine2
-                            ,i.Town
-                            ,i.Postcode
-                            ,i.PhoneNumber
-                            ,i.EmailAddress
-          
-                   GROUP BY i.CustomerID,i.CompanyName,i.Name,i.AddressLine1,i.AddressLine2,i.Town,i.Postcode,i.PhoneNumber,i.EmailAddress");
+                    SELECT   Id
+                            ,CompanyName
+                            ,Name
+                            ,AddressLine1
+                            ,AddressLine2
+                            ,Town
+                            ,Postcode
+                            ,PhoneNumber
+                            ,EmailAddress
+                    FROM  Customer");
             }
         }
+        // GET: api/Customer/5
+
+        public Customer Get(int id)
+        {
+            using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ReactSharp"].ToString()))
+            {
+                return con.Query<Customer>(@"
+                    SELECT   Id
+                            ,CompanyName
+                            ,Name
+                            ,AddressLine1
+                            ,AddressLine2
+                            ,Town
+                            ,Postcode
+                            ,PhoneNumber
+                            ,EmailAddress
+                    FROM  Customer WHERE Id = @Id", new { Id = id }).FirstOrDefault();
+            };
+
+        }
+
 
     }
 

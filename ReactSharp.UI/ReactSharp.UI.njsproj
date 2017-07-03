@@ -30,8 +30,42 @@
   <ItemGroup>
     <Compile Include="src\App.js" />
     <Compile Include="src\App.test.js" />
+    <Compile Include="src\components\CustomerList.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\CustomerSearch.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\EditCustomer.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\index.js" />
     <Compile Include="src\registerServiceWorker.js" />
+    <Compile Include="src\semantic-ui\components\accordion.min.js" />
+    <Compile Include="src\semantic-ui\components\api.min.js" />
+    <Compile Include="src\semantic-ui\components\checkbox.min.js" />
+    <Compile Include="src\semantic-ui\components\colorize.min.js" />
+    <Compile Include="src\semantic-ui\components\dimmer.min.js" />
+    <Compile Include="src\semantic-ui\components\dropdown.min.js" />
+    <Compile Include="src\semantic-ui\components\embed.min.js" />
+    <Compile Include="src\semantic-ui\components\form.min.js" />
+    <Compile Include="src\semantic-ui\components\modal.min.js" />
+    <Compile Include="src\semantic-ui\components\nag.min.js" />
+    <Compile Include="src\semantic-ui\components\popup.min.js" />
+    <Compile Include="src\semantic-ui\components\progress.min.js" />
+    <Compile Include="src\semantic-ui\components\rating.min.js" />
+    <Compile Include="src\semantic-ui\components\search.min.js" />
+    <Compile Include="src\semantic-ui\components\shape.min.js" />
+    <Compile Include="src\semantic-ui\components\sidebar.min.js" />
+    <Compile Include="src\semantic-ui\components\site.min.js" />
+    <Compile Include="src\semantic-ui\components\state.min.js" />
+    <Compile Include="src\semantic-ui\components\sticky.min.js" />
+    <Compile Include="src\semantic-ui\components\tab.min.js" />
+    <Compile Include="src\semantic-ui\components\transition.min.js" />
+    <Compile Include="src\semantic-ui\components\video.min.js" />
+    <Compile Include="src\semantic-ui\components\visibility.min.js" />
+    <Compile Include="src\semantic-ui\components\visit.min.js" />
+    <Compile Include="src\semantic-ui\semantic.min.js" />
     <Content Include="package.json" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
@@ -40,10 +74,86 @@
     <Content Include="src\App.css" />
     <Content Include="src\index.css" />
     <Content Include="src\logo.svg" />
+    <Content Include="src\semantic-ui\components\accordion.min.css" />
+    <Content Include="src\semantic-ui\components\ad.min.css" />
+    <Content Include="src\semantic-ui\components\breadcrumb.min.css" />
+    <Content Include="src\semantic-ui\components\button.min.css" />
+    <Content Include="src\semantic-ui\components\card.min.css" />
+    <Content Include="src\semantic-ui\components\checkbox.min.css" />
+    <Content Include="src\semantic-ui\components\comment.min.css" />
+    <Content Include="src\semantic-ui\components\container.min.css" />
+    <Content Include="src\semantic-ui\components\dimmer.min.css" />
+    <Content Include="src\semantic-ui\components\divider.min.css" />
+    <Content Include="src\semantic-ui\components\dropdown.min.css" />
+    <Content Include="src\semantic-ui\components\embed.min.css" />
+    <Content Include="src\semantic-ui\components\feed.min.css" />
+    <Content Include="src\semantic-ui\components\flag.min.css" />
+    <Content Include="src\semantic-ui\components\form.min.css" />
+    <Content Include="src\semantic-ui\components\grid.min.css" />
+    <Content Include="src\semantic-ui\components\header.min.css" />
+    <Content Include="src\semantic-ui\components\icon.min.css" />
+    <Content Include="src\semantic-ui\components\image.min.css" />
+    <Content Include="src\semantic-ui\components\input.min.css" />
+    <Content Include="src\semantic-ui\components\item.min.css" />
+    <Content Include="src\semantic-ui\components\label.min.css" />
+    <Content Include="src\semantic-ui\components\list.min.css" />
+    <Content Include="src\semantic-ui\components\loader.min.css" />
+    <Content Include="src\semantic-ui\components\menu.min.css" />
+    <Content Include="src\semantic-ui\components\message.min.css" />
+    <Content Include="src\semantic-ui\components\modal.min.css" />
+    <Content Include="src\semantic-ui\components\nag.min.css" />
+    <Content Include="src\semantic-ui\components\popup.min.css" />
+    <Content Include="src\semantic-ui\components\progress.min.css" />
+    <Content Include="src\semantic-ui\components\rail.min.css" />
+    <Content Include="src\semantic-ui\components\rating.min.css" />
+    <Content Include="src\semantic-ui\components\reset.min.css" />
+    <Content Include="src\semantic-ui\components\reveal.min.css" />
+    <Content Include="src\semantic-ui\components\search.min.css" />
+    <Content Include="src\semantic-ui\components\segment.min.css" />
+    <Content Include="src\semantic-ui\components\shape.min.css" />
+    <Content Include="src\semantic-ui\components\sidebar.min.css" />
+    <Content Include="src\semantic-ui\components\site.min.css" />
+    <Content Include="src\semantic-ui\components\statistic.min.css" />
+    <Content Include="src\semantic-ui\components\step.min.css" />
+    <Content Include="src\semantic-ui\components\sticky.min.css" />
+    <Content Include="src\semantic-ui\components\tab.min.css" />
+    <Content Include="src\semantic-ui\components\table.min.css" />
+    <Content Include="src\semantic-ui\components\transition.min.css" />
+    <Content Include="src\semantic-ui\components\video.min.css" />
+    <Content Include="src\semantic-ui\semantic.min.css" />
+    <Content Include="src\semantic-ui\themes\basic\assets\fonts\icons.eot" />
+    <Content Include="src\semantic-ui\themes\basic\assets\fonts\icons.svg" />
+    <Content Include="src\semantic-ui\themes\basic\assets\fonts\icons.ttf" />
+    <Content Include="src\semantic-ui\themes\basic\assets\fonts\icons.woff" />
+    <Content Include="src\semantic-ui\themes\default\assets\fonts\icons.eot" />
+    <Content Include="src\semantic-ui\themes\default\assets\fonts\icons.otf" />
+    <Content Include="src\semantic-ui\themes\default\assets\fonts\icons.svg" />
+    <Content Include="src\semantic-ui\themes\default\assets\fonts\icons.ttf" />
+    <Content Include="src\semantic-ui\themes\default\assets\fonts\icons.woff" />
+    <Content Include="src\semantic-ui\themes\default\assets\fonts\icons.woff2" />
+    <Content Include="src\semantic-ui\themes\default\assets\images\flags.png" />
+    <Content Include="src\semantic-ui\themes\github\assets\fonts\octicons-local.ttf" />
+    <Content Include="src\semantic-ui\themes\github\assets\fonts\octicons.svg" />
+    <Content Include="src\semantic-ui\themes\github\assets\fonts\octicons.ttf" />
+    <Content Include="src\semantic-ui\themes\github\assets\fonts\octicons.woff" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\" />
     <Folder Include="public\" />
+    <Folder Include="src\components\" />
+    <Folder Include="src\semantic-ui\" />
+    <Folder Include="src\semantic-ui\components\" />
+    <Folder Include="src\semantic-ui\themes\" />
+    <Folder Include="src\semantic-ui\themes\basic\" />
+    <Folder Include="src\semantic-ui\themes\basic\assets\" />
+    <Folder Include="src\semantic-ui\themes\basic\assets\fonts\" />
+    <Folder Include="src\semantic-ui\themes\default\" />
+    <Folder Include="src\semantic-ui\themes\default\assets\" />
+    <Folder Include="src\semantic-ui\themes\default\assets\fonts\" />
+    <Folder Include="src\semantic-ui\themes\default\assets\images\" />
+    <Folder Include="src\semantic-ui\themes\github\" />
+    <Folder Include="src\semantic-ui\themes\github\assets\" />
+    <Folder Include="src\semantic-ui\themes\github\assets\fonts\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
