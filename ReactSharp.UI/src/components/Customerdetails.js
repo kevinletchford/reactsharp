@@ -1,10 +1,10 @@
 ﻿import React, { Component } from 'react';
 import axios from "axios";
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+
 
 const baseUrl = 'http://localhost:56123';
 
-class CustomerList extends Component {
+class CustomerDetails extends Component {
     state = {
         customers: [],
     };
@@ -32,11 +32,9 @@ class CustomerList extends Component {
             />
         ));
         return (
-            <Router>
             <div className="ui cards container">
                 {customers}
             </div>
-            </Router>
         );
     }
 }
@@ -59,16 +57,6 @@ class Customer extends Component {
                     <p>{this.props.EmailAddress}</p>
                 </div>
             </div>
-        );
-    }
-}
-
-class Customers extends Component {
-    render() {
-        return (
-            
-                <Route path="/CustomerList/:id" component={Customer} />
-
         );
     }
 }

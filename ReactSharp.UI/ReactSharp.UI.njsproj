@@ -36,7 +36,37 @@
     <Compile Include="src\components\CustomerSearch.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="src\components\customers\Customer.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\customers\CustomerEdit.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\customers\CustomerList.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\components\EditCustomer.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\invoices\Invoice.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\invoices\InvoiceEdit.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\invoices\InvoiceList.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\layout\Footer.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\layout\Header.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\settings\CompanyInformation.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\settings\Theme.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\index.js" />
@@ -72,9 +102,9 @@
     <Content Include="public\manifest.json" />
     <Content Include="README.md" />
     <Content Include="src\App.css" />
+    <Content Include="src\css\style.scss" />
     <Content Include="src\index.css" />
     <Content Include="src\logo.svg" />
-    <Content Include="src\semantic-ui\components\accordion.min.css" />
     <Content Include="src\semantic-ui\components\ad.min.css" />
     <Content Include="src\semantic-ui\components\breadcrumb.min.css" />
     <Content Include="src\semantic-ui\components\button.min.css" />
@@ -141,6 +171,14 @@
     <Folder Include="src\" />
     <Folder Include="public\" />
     <Folder Include="src\components\" />
+    <Folder Include="src\components\customers\" />
+    <Folder Include="src\components\invoices\" />
+    <Folder Include="src\components\dashboard\" />
+    <Folder Include="src\components\login\" />
+    <Folder Include="src\components\layout\" />
+    <Folder Include="src\components\settings\" />
+    <Folder Include="src\css\" />
+    <Folder Include="src\svg\" />
     <Folder Include="src\semantic-ui\" />
     <Folder Include="src\semantic-ui\components\" />
     <Folder Include="src\semantic-ui\themes\" />
