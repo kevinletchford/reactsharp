@@ -1,24 +1,49 @@
-.App {
-  text-align: center;
+:root {
+  --header-bg:#16191d;
+  --main-bg:  #252830;
+  --borders:  #32363f;
+  --main-text:#a0a6b1; 
+  --dark-text:#6f6f6f;
+  --customers:#f35188;
+  --invoices: #3f98f9;
+  --positive: #18caa3;
+  --negative: #ef2e3c;
+  --body-font:     'Fira Sans', sans-serif;  
+  --header-font:   'Space Mono', monospace;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body,html{
+  height: 100%;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+body{
+  background:var(--main-bg);
+  font-family:var(--body-font);
+  color:var(--main-text);
+  font-size: calc(12px + (26 - 14) * ((100vw - 768px) / (1900 - 300)));
 }
 
-.App-intro {
-  font-size: large;
+h1, h2, h3, h4, h5, h6{
+  font-family:var(--header-font);
+  font-weight:normal;
+  margin:0;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+h1{
+  font-size:2em;
+}
+
+a{
+  color:var(--main-text);
+  text-decoration: none;
+}
+
+main{
+  padding:1rem;
+}
+
+pageheader{
+  display:grid;  
+  grid-template-columns: 1fr auto;
+  align-items:baseline;
 }

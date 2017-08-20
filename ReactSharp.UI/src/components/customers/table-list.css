@@ -1,0 +1,39 @@
+.table-list table{
+    width: 100%;
+    table-layout: fixed;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.table-list thead{
+    font-family:var(--header-font);
+    background:var(--header-bg);
+}
+
+
+.table-list th{
+    border:1px solid var(--borders);
+    border-left:none;
+    border-right:none;
+    padding:0.25em 1rem;
+    font-weight:normal; 
+    color:var(--dark-text);
+}
+
+.table-list td{
+    padding:0.5em 1rem;
+    border-bottom:1px solid var(--borders);
+    font-size:0.825em;
+    vertical-align: center;
+}
+
+.table-list .icon{
+    vertical-align: center;
+    display:inline-block;
+}
+
+
+.icon.icon_view{
+    opacity: 1;
+    width:22px;
+}

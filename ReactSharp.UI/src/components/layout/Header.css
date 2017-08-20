@@ -1,0 +1,52 @@
+header{
+    background-color: var(--header-bg);
+    display:grid;
+    grid-template-columns: 100px auto 100px;
+    padding:10px;
+    text-align: center;
+}
+
+header a{
+    text-decoration:none;
+    font-family: 'Space Mono', monospace;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size:1em;
+}
+
+.logo {
+  max-width: 100%;
+}
+
+.icon{
+    width:16px;
+    height:16px;
+    margin-right:5px;
+    opacity:0.5;
+}
+
+settings, 
+nav{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+nav a{
+    padding:0 10px;
+}
+
+settings a{
+    color:var(--main-text);
+}
+
+.customers{
+    color:var(--customers);
+    text-decoration: none;
+}
+
+.invoices{
+    color:var(--invoices);
+    text-decoration: none;
+}

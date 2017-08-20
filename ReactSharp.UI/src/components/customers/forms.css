@@ -1,0 +1,37 @@
+:root {
+    --header-bg:#16191d;
+    --main-bg:  #252830;
+    --borders:  #32363f;
+    --main-text:#a0a6b1; 
+    --dark-text:#6f6f6f;
+    --customers:#f35188;
+    --invoices: #3f98f9;
+    --positive: #18caa3;
+    --negative: #ef2e3c;
+    --body-font:     'Fira Sans', sans-serif;  
+    --header-font:   'Space Mono', monospace;
+  }
+  
+.input-holder{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-holder label{
+    width:100%;
+    padding:5px;
+    color:var(--dark-text);
+    font-family:var(--header-font);
+}
+
+.input-holder input[type="text"],
+.input-holder input[type="email"],
+.input-holder input[type="password"],
+.input-holder input[type="number"]{
+    background:var(--header-bg);
+    border:none;
+    padding:10px;
+    color:var(--main-text);
+    border-top:1px solid var(--borders);
+    border-bottom:1px solid var(--borders);
+}
