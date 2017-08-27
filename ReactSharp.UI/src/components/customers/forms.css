@@ -15,10 +15,15 @@
 .input-holder{
     display: flex;
     flex-direction: column;
+    max-width:800px;
+    border-right: 0.5em solid var(--headder-bg);
+    margin-bottom:1em;
+    padding-right:1em;
 }
 
 .input-holder label{
     width:100%;
+    font-size:0.9rem;
     padding:5px;
     color:var(--dark-text);
     font-family:var(--header-font);
@@ -34,4 +39,5 @@
     color:var(--main-text);
     border-top:1px solid var(--borders);
     border-bottom:1px solid var(--borders);
+    font-size:1.2rem;
 }

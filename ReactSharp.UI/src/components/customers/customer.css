@@ -1,0 +1,14 @@
+.customer-details__item{
+ display:flex;
+ flex-direction: column;
+ margin-bottom:10px;
+}
+
+.customer-details__label{
+    font-size:0.925em;
+    color:var( --dark-text);
+}
+
+.customer-details__description{
+    font-size: 1.125em;
+}

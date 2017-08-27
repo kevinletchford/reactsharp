@@ -32,5 +32,25 @@ namespace ReactSharp.Controllers
             }
         }
 
+        // GET: api/Invoice/5
+        public Invoice Get(int id)
+        {
+            using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["KevsInvoicing"].ToString()))
+            {
+                var invoice = con.Query<Invoice>("SELECT * FROM Invoice WHERE Id = @Id", new {Id = id}).FirstOrDefault();
+                if (invoice == null)
+                    return null;
+
+                var items =
+                    con.Query<InvoiceItem>("SELECT * FROM InvoiceItem WHERE InvoiceId = @InvoiceId",
+                        new {InvoiceId = id}).ToList();
+                invoice.Items = items;
+                invoice.ItemCount = items.Count;
+
+                return invoice;
+            }
+        }
+
+
     }
 }

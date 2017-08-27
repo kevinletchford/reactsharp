@@ -17,5 +17,7 @@ namespace ReactSharp.Models
         public string Postcode { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
+        public List<Invoice> Invoices { get; set; }
+        public int InvoiceCount { get; set; }
     }
 }
