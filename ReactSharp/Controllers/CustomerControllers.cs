@@ -57,8 +57,7 @@ namespace ReactSharp.Controllers
         {
             using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ReactSharp"].ToString()))
             {
-                var sql = @"INSERT INTO Customer (
-                                                    CompanyName
+                var sql = @"INSERT INTO Customer (  CompanyName
                                                     ,Name
                                                     ,AddressLine1
                                                     ,AddressLine2
@@ -67,13 +66,12 @@ namespace ReactSharp.Controllers
                                                     ,PhoneNumber
                                                     ,EmailAddress) 
 
-                                         VALUES (  
-                                                    @CompanyName
+                                         VALUES (    @CompanyName
                                                     ,@Name
                                                     ,@AddressLine1
                                                     ,@AddressLine2
                                                     ,@Town
-                                                    ,@:Postcode
+                                                    ,@Postcode
                                                     ,@PhoneNumber
                                                     ,@EmailAddress)";
                 con.Execute(sql, customer);
