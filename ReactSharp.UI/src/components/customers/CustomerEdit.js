@@ -21,7 +21,7 @@ class CustomerEdit extends Component {
     };
     handleSubmit(e){
         e.preventDefault();
-        axios.post(`${baseUrl}/api/Customer`, {
+        axios.post(`${baseUrl}/Customers`, {
             CompanyName: this.state.CompanyName,
             Name: this.state.Name,
             AddressLine1: this.state.AddressLine1,

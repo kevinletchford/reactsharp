@@ -95,12 +95,16 @@
   <ItemGroup>
     <Compile Include="App_Start\BrowseJsonFormatter.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Controllers\CustomerController-old.html" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="DAL\CustomerRespository.cs" />
+    <Compile Include="DAL\ICustomerRespository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Controllers\CustomerControllers.cs" />
+    <Content Include="Controllers\CustomerControllers.html" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\InvoiceItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

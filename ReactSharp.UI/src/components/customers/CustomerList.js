@@ -15,7 +15,7 @@ class CustomerList extends Component {
     };
     componentDidMount() {
         axios
-            .get(`${baseUrl}/api/customer`)
+            .get(`${baseUrl}/Customers/`)
             .then(response => {
                 this.setState({
                     customers: response.data

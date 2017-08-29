@@ -15,7 +15,7 @@ class Customer extends Component {
         const customerId = this.props.match.params.customerId;
         console.log(`${baseUrl}/api/customer/${customerId}`);
         axios
-            .get(`${baseUrl}/api/customer/${customerId}`)
+            .get(`${baseUrl}/Customers/${customerId}`)
             .then(response => {
                 console.log( response.data);
                 this.setState({

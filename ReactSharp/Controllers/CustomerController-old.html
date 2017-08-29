@@ -53,7 +53,7 @@ namespace ReactSharp.Controllers
 
         }
 
-        public void Post([FromBody]Customer customer)
+        public bool Post([FromBody]Customer customer)
         {
             using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ReactSharp"].ToString()))
             {
@@ -75,10 +75,11 @@ namespace ReactSharp.Controllers
                                                     ,@PhoneNumber
                                                     ,@EmailAddress)";
                 con.Execute(sql, customer);
+                return new HttpResponseMessage(customer, HttpStatusCode.Created);
             }
         }
 
-
+        
 
         public void Put(int id, [FromBody]Customer customer)
         {
@@ -102,4 +103,10 @@ namespace ReactSharp.Controllers
 
     }
 
+    internal class HttpResponseMessage<T>
+    {
+        public HttpResponseMessage()
+        {
+        }
+    }
 }
