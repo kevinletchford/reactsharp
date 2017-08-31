@@ -51,7 +51,7 @@ namespace ReactSharp.Controllers
         // PUT: api/Customer/5
         [Route("Customers")]
         [HttpPut]
-        public bool Put([FromBody]Customer ourCustomer)
+        public int Put([FromBody]Customer ourCustomer)
         {
             return _ourCustomerRespository.UpdateCustomer(ourCustomer);
         }

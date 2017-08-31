@@ -1,8 +1,10 @@
 ﻿import React, { Component } from 'react';
 import axios from "axios";
+import { BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import './forms.css';
 
 const baseUrl = 'http://localhost:56123';
+
 
 class CustomerEdit extends Component {
     constructor(props) {
@@ -14,28 +16,74 @@ class CustomerEdit extends Component {
                         Town:'',
                         Postcode:'',
                         PhoneNumber:'',
-                        EmailAddress:''
+                        EmailAddress:'',
+                        CustomerId:'',
         }
         this.onSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
     };
+    componentDidMount() {
+          const customerId = this.props.match.params.customerId;
+          console.log(`${baseUrl}/customer/${customerId}`);
+          axios
+              .get(`${baseUrl}/Customer/${customerId}`)
+              .then(response => {
+                  console.log( response.data);
+                  this.setState({
+                    Id: response.data.CustomerId,
+                    CompanyName: response.data.CompanyName,
+                    Name: response.data.Name,
+                    AddressLine1: response.data.AddressLine1,
+                    AddressLine2: response.data.AddressLine2,
+                    Town: response.data.Town,
+                    Postcode: response.data.Postcode,
+                    PhoneNumber: response.data.PhoneNumber,
+                    EmailAddress: response.data.EmailAddress
+                  });
+              });
+      };
+
+
     handleSubmit(e){
         e.preventDefault();
-        axios.post(`${baseUrl}/Customers`, {
-            CompanyName: this.state.CompanyName,
-            Name: this.state.Name,
-            AddressLine1: this.state.AddressLine1,
-            AddressLine2: this.state.AddressLine2,
-            Town: this.state. Town,
-            Postcode: this.state.Postcode,
-            PhoneNumber: this.state.PhoneNumber,
-            EmailAddress: this.state.EmailAddress
-        }).then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        var _this = this;
+        if(this.state.CustomerId > 0){
+            axios.put(`${baseUrl}/Customers/`, {
+                Id: this.state.CustomerId,
+                CompanyName: this.state.CompanyName,
+                Name: this.state.Name,
+                AddressLine1: this.state.AddressLine1,
+                AddressLine2: this.state.AddressLine2,
+                Town: this.state.Town,
+                Postcode: this.state.Postcode,
+                PhoneNumber: this.state.PhoneNumber,
+                EmailAddress: this.state.EmailAddress
+            }).then(function (response) {
+                _this.setState({});
+                })
+                .catch(function (error) {
+                console.log(error);
+                });
+        }
+        else{
+            axios.post(`${baseUrl}/Customers`, {
+                CompanyName: this.state.CompanyName,
+                Name: this.state.Name,
+                AddressLine1: this.state.AddressLine1,
+                AddressLine2: this.state.AddressLine2,
+                Town: this.state.Town,
+                Postcode: this.state.Postcode,
+                PhoneNumber: this.state.PhoneNumber,
+                EmailAddress: this.state.EmailAddress
+            }).then(function (response) {
+                _this.setState({
+                    CustomerId: response.data
+                });
+                })
+                .catch(function (error) {
+                console.log(error);
+                });
+        }
     };
 
 
@@ -48,12 +96,19 @@ class CustomerEdit extends Component {
           [name]: value
         });
       }
+
     render() {
+        const editCustomer = this.state.CustomerId;
+        let pageHeader = null;
+        if(this.state.CustomerId > 0){
+            pageHeader = <h1>Edit Customer</h1>
+        }
+        else{
+            pageHeader = <h1>Add a new customer</h1>
+        }
         return (
             <div>
-                <pageheader>
-                    <h1>Add a new customer</h1>
-                </pageheader>
+                {pageHeader}
                 <editCustomer>
                 <form onSubmit={this.onSubmit}>
                     <div className="input-holder">
@@ -88,7 +143,7 @@ class CustomerEdit extends Component {
                         <label htmlFor="EmailAddress">Email</label>
                         <input name="EmailAddress" value={this.state.EmailAddress} type="email"  onChange={this.handleInputChange} />
                     </div>
-                    <input class="button" type="submit" value="Submit"  />
+                    <input className="button" type="submit" value="Submit"  />
                 </form>
                 </editCustomer>
             </div>

@@ -11,8 +11,9 @@ class customerIndex extends Component {
             <main>
             <Switch>
                 <Route path={this.props.match.path} exact component={CustomerList} />
-                <Route path={`${this.props.match.path}/CustomerEdit`} component={CustomerEdit} />
-                <Route path={`${this.props.match.path}/:customerId`} component={Customer} />
+                <Route path={`${this.props.match.path}/CustomerEdit`} exact component={CustomerEdit} />
+                <Route path={`${this.props.match.path}/CustomerEdit/:customerId`} exact  component={CustomerEdit} />
+                <Route path={`${this.props.match.path}/:customerId`} exact  component={Customer} />
             </Switch>
             </main>
         );

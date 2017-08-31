@@ -17,6 +17,7 @@ namespace ReactSharp.DAL
 
         bool DeleteCustomer(int customerId);
 
-        bool UpdateCustomer(Customer ourCustomer);
+        int UpdateCustomer(Customer ourCustomer);
+        List<Customer> GetCustomers(int v1, string v2);
     }
 }

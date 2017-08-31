@@ -112,9 +112,9 @@ namespace ReactSharp.DAL
             return false;
         }
 
-        public bool UpdateCustomer(Customer ourCustomer)
+        public int UpdateCustomer(Customer ourCustomer)
         {
-            int rowsAffected = this._db.Execute(
+            int rowsAffected = this._db.ExecuteScalar<int>(
                         @"UPDATE [Customer] 
                         SET 
                          [CompanyName]   = @CompanyName
@@ -125,15 +125,10 @@ namespace ReactSharp.DAL
                         ,[Postcode]      = @Postcode
                         ,[PhoneNumber]   = @PhoneNumber
                         ,[EmailAddress]  = @EmailAddress
-                        WHERE Id = @Id", 
+                        WHERE Id = @Id SELECT CAST(SCOPE_IDENTITY() as int)", 
                         ourCustomer);
 
-            if (rowsAffected > 0)
-            {
-                return true;
-            }
-
-            return false;
+            return rowsAffected;
         }
     }
 }

@@ -6,7 +6,7 @@ import CustomerIndex from './components/customers/Index';
 import InvoiceIndex from './components/invoices/Index';
 import Settings from './components/settings/Index';
 import Dashboard from './components/dashboard/Index';
-import Header from './components/layout/Header';
+import Header from './components/layout/Header.js';
 
 class App extends Component {
     render() {

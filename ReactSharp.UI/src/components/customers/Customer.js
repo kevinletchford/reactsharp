@@ -13,9 +13,9 @@ class Customer extends Component {
     componentDidMount() {
       
         const customerId = this.props.match.params.customerId;
-        console.log(`${baseUrl}/api/customer/${customerId}`);
+        console.log(`${baseUrl}/customer/${customerId}`);
         axios
-            .get(`${baseUrl}/Customers/${customerId}`)
+            .get(`${baseUrl}/Customer/${customerId}`)
             .then(response => {
                 console.log( response.data);
                 this.setState({
@@ -29,7 +29,7 @@ class Customer extends Component {
         return (
             <div>
                 <pageheader>
-                    <h1>Customer Details {this.props.match.params.customerId}</h1>
+                    <h1>Customer Details #{this.props.match.params.customerId}</h1>
                 </pageheader>
                 <customerDetails>
                     <div className="customer-details__item">
