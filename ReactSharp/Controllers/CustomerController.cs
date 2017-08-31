@@ -9,12 +9,13 @@ namespace ReactSharp.Controllers
     [EnableCors("*", "*", "*")]
     public class CustomerController : ApiController
     {
-        private CustomerRespository _ourCustomerRespository;
+        private ICustomerRespository _ourCustomerRespository;
 
         public CustomerController()
         {
             _ourCustomerRespository = new CustomerRespository();
         }
+
         [Route("Customers")]
         [HttpGet]
         public List<Customer> Get()
@@ -25,13 +26,13 @@ namespace ReactSharp.Controllers
         // GET: /Customer/10/ASC
         [Route("Customers/{amount}/{sort}")]
         [HttpGet]
-        public List<Customer> Get(int amount, string sort)
+        public List<Customer> Get(int amount, CustomerRespository.SortOrder sort)
         {
             return _ourCustomerRespository.GetCustomers(amount, sort);
         }
 
         // GET: /Customer/5
-        [Route("Customers/{id}")]
+        [Route("Customer/{id}")]
         [HttpGet]
         public Customer Get(int id)
         {
@@ -41,7 +42,7 @@ namespace ReactSharp.Controllers
         // POST: /Customer
         [Route("Customers")]
         [HttpPost]
-        public bool Post([FromBody]Customer ourCustomer)
+        public int Post([FromBody]Customer ourCustomer)
         {
             //return true;
             return _ourCustomerRespository.InsertCustomer(ourCustomer);

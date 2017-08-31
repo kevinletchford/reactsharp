@@ -5,7 +5,7 @@ import circle from './../../svg/icons_circle.svg';
 import square from './../../svg/icons_square.svg'; 
 import view from './../../svg/icons_view.svg'; 
 import './table-list.css';
-import helper from './../../helpers/helper.js';
+
 
 const baseUrl = 'http://localhost:56123';
 

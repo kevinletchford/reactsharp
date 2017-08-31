@@ -6,7 +6,7 @@ import square from './../../svg/icons_square.svg';
 import triangle from './../../svg/icons_triangle.svg'; 
 
 import './Header.css';
-class header extends Component {
+class Header extends Component {
     render() {
         return (
             <header>
@@ -33,4 +33,4 @@ class header extends Component {
     }
 }
 
-export default header;
+export default Header;

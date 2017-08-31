@@ -9,11 +9,11 @@ namespace ReactSharp.DAL
 {
     internal interface ICustomerRespository
     {
-        List<Customer> GetCustomers(int amount, string sort);
+        List<Customer> GetCustomers(int amount, CustomerRespository.SortOrder sort);
 
         Customer GetSingleCustomer(int customerId);
 
-        bool InsertCustomer(Customer ourCustomer);
+        int InsertCustomer(Customer ourCustomer);
 
         bool DeleteCustomer(int customerId);
 

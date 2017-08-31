@@ -10,6 +10,12 @@ namespace ReactSharp.DAL
 {
     public class CustomerRespository : ICustomerRespository
     {
+        public enum SortOrder
+        {
+            Asc,
+            Desc
+        }
+
         private readonly IDbConnection _db;
 
         public CustomerRespository()
@@ -19,9 +25,27 @@ namespace ReactSharp.DAL
 
         public List<Customer> GetCustomers(int amount, string sort)
         {
-           return this._db.Query<Customer>(@"
+            return this._db.Query<Customer>(@"
                 SELECT TOP " + amount +
-                @"[Id],
+                 @"[Id],
+                [CompanyName],
+                [Name],
+                [AddressLine1],
+                [AddressLine2],
+                [Town],
+                [Postcode],
+                [EmailAddress]
+                FROM [Customer] 
+                ORDER BY Id " + sort).ToList();
+        }
+
+        public List<Customer> GetCustomers(int amount, SortOrder sortOrder)
+        {
+            var sort = sortOrder == SortOrder.Asc ? "ASC" : "DESC";
+
+            return this._db.Query<Customer>(@"
+                SELECT TOP " + amount +
+                 @"[Id],
                 [CompanyName],
                 [Name],
                 [AddressLine1],
@@ -50,9 +74,9 @@ namespace ReactSharp.DAL
                 new { Id = customerId }).SingleOrDefault();
         }
 
-        public bool InsertCustomer(Customer ourCustomer)
+        public int InsertCustomer(Customer ourCustomer)
         {
-            int rowsAffected = this._db.Execute(@"
+            int newCustomerId = this._db.ExecuteScalar<int>(@"
                 INSERT Customer(
                              [CompanyName]
                             ,[Name]
@@ -69,25 +93,10 @@ namespace ReactSharp.DAL
                             ,@Town
                             ,@Postcode
                             ,@PhoneNumber
-                            ,@EmailAddress)",
-            new
-            {
-                CustomerId = ourCustomer.Id,
-                CompanyName = ourCustomer.CompanyName,
-                Name = ourCustomer.Name,
-                AddressLine1 = ourCustomer.AddressLine1,
-                AddressLine2 = ourCustomer.AddressLine2,
-                Town = ourCustomer.Town,
-                Postcode = ourCustomer.Postcode,
-                PhoneNumber = ourCustomer.PhoneNumber,
-                EmailAddress = ourCustomer.EmailAddress
-            }
+                            ,@EmailAddress); SELECT CAST(SCOPE_IDENTITY() as int)",
+            ourCustomer
             );
-            if (rowsAffected > 0)
-            {
-                return true;
-            }
-            return false;
+            return newCustomerId;
         }
 
         public bool DeleteCustomer(int customerId)
@@ -106,17 +115,17 @@ namespace ReactSharp.DAL
         public bool UpdateCustomer(Customer ourCustomer)
         {
             int rowsAffected = this._db.Execute(
-                        "UPDATE [Customer] " +
-                        "SET " +
-                        " [CompanyName]   = @CompanyName" +
-                        ",[Name]          = @Name" +
-                        ",[AddressLine1]  = @AddressLine1" +
-                        ",[AddressLine2]  = @AddressLine2" +
-                        ",[Town]          = @Town" +
-                        ",[Postcode]      = @Postcode" +
-                        ",[PhoneNumber]   = @PhoneNumber" +
-                        ",[EmailAddress]  = @EmailAddress" +
-                        "WHERE Id = " + ourCustomer.Id, 
+                        @"UPDATE [Customer] 
+                        SET 
+                         [CompanyName]   = @CompanyName
+                        ,[Name]          = @Name
+                        ,[AddressLine1]  = @AddressLine1
+                        ,[AddressLine2]  = @AddressLine2
+                        ,[Town]          = @Town
+                        ,[Postcode]      = @Postcode
+                        ,[PhoneNumber]   = @PhoneNumber
+                        ,[EmailAddress]  = @EmailAddress
+                        WHERE Id = @Id", 
                         ourCustomer);
 
             if (rowsAffected > 0)
