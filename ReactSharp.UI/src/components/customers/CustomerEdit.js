@@ -30,7 +30,7 @@ class CustomerEdit extends Component {
               .then(response => {
                   console.log( response.data);
                   this.setState({
-                    Id: response.data.CustomerId,
+                    CustomerId: response.data.Id,
                     CompanyName: response.data.CompanyName,
                     Name: response.data.Name,
                     AddressLine1: response.data.AddressLine1,
