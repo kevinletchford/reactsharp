@@ -14,7 +14,7 @@ class App extends Component {
            
             <Router>           
             <div>
-                <Header/>
+                 <Header/>
                 <div className="pusher">
                     <div className="ui basic segment">
                         <Route path="/" exact component={Dashboard} />

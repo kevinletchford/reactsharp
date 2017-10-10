@@ -7,10 +7,14 @@
     "node-sass-chokidar": "0.0.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.2"
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.14",
+    "redux": "^3.7.2",
+    "redux-axios-middleware": "^4.0.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.11"
+    "react-scripts": "1.0.11",
+    "standard": "^10.0.3"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -19,5 +23,27 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "standard.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "html",
+      "autoFix": true
+    }
+  ],
+  "standard.options": {
+    "globals": [
+      "$",
+      "jQuery",
+      "fetch"
+    ],
+    "ignore": [
+      "node_modules/**"
+    ],
+    "plugins": [
+      "html"
+    ],
+    "parser": "babel-eslint"
   }
 }

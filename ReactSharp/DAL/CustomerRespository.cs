@@ -34,6 +34,7 @@ namespace ReactSharp.DAL
                 [AddressLine2],
                 [Town],
                 [Postcode],
+                [PhoneNumber],
                 [EmailAddress]
                 FROM [Customer] 
                 ORDER BY Id " + sort).ToList();
@@ -52,6 +53,7 @@ namespace ReactSharp.DAL
                 [AddressLine2],
                 [Town],
                 [Postcode],
+                [PhoneNumber],
                 [EmailAddress]
                 FROM [Customer] 
                 ORDER BY Id " + sort).ToList();
@@ -68,6 +70,7 @@ namespace ReactSharp.DAL
                 [AddressLine2],
                 [Town],
                 [Postcode],
+                [PhoneNumber],
                 [EmailAddress]
                 FROM [Customer]
                 WHERE Id =@Id", 

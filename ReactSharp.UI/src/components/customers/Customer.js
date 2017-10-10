@@ -1,73 +1,106 @@
-﻿import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
-import axios from "axios";
-import './customer.css';
+﻿import React, { Component } from 'react'
 
-const baseUrl = 'http://localhost:56123';
-
+import {getData, postData, putData} from './../../helpers/helpers'
+import './customer.css'
 
 class Customer extends Component {
-    state = {
-        customer: [],
-    };
-    componentDidMount() {
-      
-        const customerId = this.props.match.params.customerId;
-        console.log(`${baseUrl}/customer/${customerId}`);
-        axios
-            .get(`${baseUrl}/Customer/${customerId}`)
-            .then(response => {
-                console.log( response.data);
-                this.setState({
-                    customer: response.data
-                });
-            });
-    };
+  constructor (props) {
+    super(props)
+    this.state = {customer: []}
+    this.onSubmit = this.handleSubmit.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
+  }
 
-   render() {  
-        const customerDetails = this.state.customer;
-        return (
-            <div>
-                <pageheader>
-                    <h1>Customer Details #{this.props.match.params.customerId}</h1>
-                </pageheader>
-                <customerDetails>
-                    <div className="customer-details__item">
-                        <span className="customer-details__label">Company Name</span>
-                        <span className="customer-details__description">{customerDetails.CompanyName}</span>
-                    </div>
-                    <div className="customer-details__item">
-                        <span className="customer-details__label">Name</span>
-                        <span className="customer-details__description">{customerDetails.Name}</span>
-                    </div>
-                    <div className="customer-details__item">
-                        <span className="customer-details__label">Address line 1</span>
-                        <span className="customer-details__description">{customerDetails.AddressLine1}</span>
-                    </div>
-                    <div className="customer-details__item">
-                        <span className="customer-details__label">Address line 2</span>
-                        <span className="customer-details__description">{customerDetails.AddressLine2}</span>
-                    </div>
-                    <div className="customer-details__item">
-                        <span className="customer-details__label">Town</span>
-                        <span className="customer-details__description">{customerDetails.Town}</span>
-                    </div>
-                    <div className="customer-details__item">
-                        <span className="customer-details__label">Postcode</span>
-                        <span className="customer-details__description">{customerDetails.Postcode}</span>
-                    </div>
-                    <div className="customer-details__item">
-                        <span className="customer-details__label">Phone Number</span>
-                        <span className="customer-details__description">{customerDetails.PhoneNumber}</span>
-                    </div>
-                    <div className="customer-details__item">
-                        <span className="customer-details__label">Email</span>
-                        <span className="customer-details__description">{customerDetails.EmailAddress}</span>
-                    </div>
-                </customerDetails>
-            </div>
-        );
+  componentDidMount () {
+    const customerId = this.props.match.params.customerId
+    getData(this, `/Customer/${customerId}`, 'customer')
+  }
+
+  handleSubmit (e) {
+    e.preventDefault()
+    const customerDetails = this.state.customer
+    var customerData = {
+      Id: customerDetails.CustomerId.trim(),
+      CompanyName: customerDetails.CompanyName,
+      Name: customerDetails.Name,
+      AddressLine1: customerDetails.AddressLine1,
+      AddressLine2: customerDetails.AddressLine2,
+      Town: customerDetails.Town,
+      Postcode: customerDetails.Postcode,
+      PhoneNumber: customerDetails.PhoneNumber,
+      EmailAddress: customerDetails.EmailAddress
     }
+    if (this.state.customer.CustomerId > 0) {
+      putData(this, '/Customers/', customerData, 'customer')
+    } else {
+      var customerId = customerData[0]
+      var customerDetailsNoId = customerDetails.filter(item => item !== customerId)
+      postData(this, '/Customers/', customerDetailsNoId, 'customer')
+    }
+  }
+
+  handleInputChange (event) {
+    const target = event.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
+    this.setState({
+      customer: {
+        [name]: [value]
+      }
+    })
+  }
+
+  render () {
+    const customerDetails = this.state.customer
+    let pageHeader = null
+    if (customerDetails.CustomerId > 0) {
+      pageHeader = <h1>Edit Customer</h1>
+    } else {
+      pageHeader = <h1>Add a new customer</h1>
+    }
+    return (
+      <div>
+        {pageHeader}
+        <customerDetails>
+          <form onSubmit={this.onSubmit}>
+            <div className='input-holder'>
+              <label htmlFor='CompanyName'>Company Name</label>
+              <input name='CompanyName' value={customerDetails.CompanyName} type='text' onChange={this.handleInputChange} />
+            </div>
+            <div className='input-holder'>
+              <label htmlFor='Name'>Name</label>
+              <input name='Name' value={customerDetails.Name} type='text' onChange={this.handleInputChange} />
+            </div>
+            <div className='input-holder'>
+              <label htmlFor='AddressLine1'>Address line 1</label>
+              <input name='AddressLine1' value={customerDetails.AddressLine1} type='text' onChange={this.handleInputChange} />
+            </div>
+            <div className='input-holder'>
+              <label htmlFor='AddressLine2'>Address line 2</label>
+              <input name='AddressLine2' value={customerDetails.AddressLine2} type='text' onChange={this.handleInputChange} />
+            </div>
+            <div className='input-holder'>
+              <label htmlFor='Town'>Town</label>
+              <input name='Town' value={customerDetails.Town} type='text' onChange={this.handleInputChange} />
+            </div>
+            <div className='input-holder'>
+              <label htmlFor='Postcode'>Postcode</label>
+              <input name='Postcode' value={customerDetails.Postcode} type='text' onChange={this.handleInputChange} />
+            </div>
+            <div className='input-holder'>
+              <label htmlFor='PhoneNumber'>Phone Number</label>
+              <input name='PhoneNumber' value={customerDetails.PhoneNumber} type='text' onChange={this.handleInputChange} />
+            </div>
+            <div className='input-holder'>
+              <label htmlFor='EmailAddress'>Email</label>
+              <input name='EmailAddress' value={customerDetails.EmailAddress} type='email' onChange={this.handleInputChange} />
+            </div>
+            <input className='button' type='submit' value='Submit' />
+          </form>
+        </customerDetails>
+      </div>
+    )
+  }
 }
 
-export default Customer;
+export default Customer
